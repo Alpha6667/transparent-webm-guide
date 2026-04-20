@@ -1,25 +1,25 @@
-# Transparent WebM Guide
+# Transparent WebM Encoding and Validation Guide
 
-这个仓库用于整理透明视频压缩为 `WebM` 的方法、验证步骤和快速操作说明。
+本仓库用于沉淀透明视频压缩为 `WebM` 的编码方法、alpha 保留验证流程，以及最小化验证 Demo 的技术说明。
 
-## 文件说明
+## Repository Contents
 
 - `transparent-webm-guide.md`
-  - 完整版说明
-  - 包含压缩命令、验证命令、透明底验证方法和网页 Demo
+  - 完整技术说明
+  - 包含编码命令、验证命令、透明底验证方法和网页 Demo
 - `transparent-webm-quickstart.md`
-  - 精简版速查
-  - 适合同事快速照着执行
+  - 快速操作手册
+  - 适合在协作场景中直接复用
 
-## 适用场景
+## Scope
 
 - 源视频本身带 alpha 通道
-- 需要压缩为透明 `WebM`
+- 需要输出透明 `WebM`
 - 需要验证输出文件是否仍然保留透明底
 
-## 推荐方案
+## Recommended Encoding Profile
 
-推荐使用：
+推荐组合：
 
 - 容器：`WebM`
 - 编码：`VP9`
@@ -37,9 +37,9 @@ ffmpeg -i input.mov \
   output.webm
 ```
 
-## 快速验证
+## Validation Checklist
 
-### 验证容器和编码
+### 1. Validate Container and Codec
 
 ```bash
 ffprobe -v error \
@@ -49,7 +49,7 @@ ffprobe -v error \
   output.webm
 ```
 
-### 验证 alpha 标记
+### 2. Validate Alpha Metadata
 
 ```bash
 ffprobe -v error \
@@ -59,7 +59,7 @@ ffprobe -v error \
   output.webm
 ```
 
-### 验证透明像素是否真实存在
+### 3. Validate Real Alpha Pixels
 
 ```bash
 ffmpeg -i output.webm \
@@ -67,7 +67,7 @@ ffmpeg -i output.webm \
   -an -f null -
 ```
 
-## 说明
+## Notes
 
-- 浏览器和 `WebView` 更适合验证透明 `WebM`
+- 浏览器和 `WebView` 更适合作为透明 `WebM` 的验证环境
 - `ExoPlayer` 对透明 `WebM` 的显示通常不稳定，常见现象是黑底
