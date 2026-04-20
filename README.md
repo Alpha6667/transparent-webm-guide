@@ -1,4 +1,4 @@
-# Transparent WebM Notes
+# Transparent WebM Guide
 
 这个仓库用于整理透明视频压缩为 `WebM` 的方法、验证步骤和快速操作说明。
 
