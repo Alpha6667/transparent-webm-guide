@@ -1,5 +1,7 @@
 # Transparent WebM Encoding and Validation Guide
 
+[中文说明](./README.zh-CN.md)
+
 本仓库用于沉淀透明视频压缩为 `WebM` 的编码方法、alpha 保留验证流程，以及最小化验证 Demo 的技术说明。
 
 ## Repository Contents
